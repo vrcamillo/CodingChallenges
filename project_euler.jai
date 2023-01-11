@@ -18,9 +18,9 @@ problem1 :: () -> int {
 	
 	limit := 1000;
 	
-	sum_of_multiples_of_3 := sum_of_multiples(3, limit);
-	sum_of_multiples_of_5 := sum_of_multiples(5, limit);
-	sum_of_multiples_of_3_and_5 := sum_of_multiples(15, limit); // Multiples of both 3 and 5 are multiples of 15.
+	sum_of_multiples_of_3 := sum_of_multiples_below(3, limit);
+	sum_of_multiples_of_5 := sum_of_multiples_below(5, limit);
+	sum_of_multiples_of_3_and_5 := sum_of_multiples_below(15, limit); // Multiples of both 3 and 5 are multiples of 15.
 	
 	// n(A + B) = n(A) + n(B) + n(A intersection B)
 	sum_of_multiples_of_3_or_5  := sum_of_multiples_of_3 + sum_of_multiples_of_5 - sum_of_multiples_of_3_and_5;
