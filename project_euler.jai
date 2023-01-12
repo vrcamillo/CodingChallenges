@@ -52,11 +52,59 @@ problem2 :: () -> int {
 	return sum_of_even_terms;
 }
 
+problem3 :: () -> int {
+	// The prime factors of 13195 are 5, 7, 13 and 29.
+	// What is the largest prime factor of the number 600851475143?
+	
+	number := 600851475143;
+	
+	primes: [..] int;
+	array_add(*primes, 2);
+		
+	get_next_prime :: (primes: *[..] int, current_prime: int) -> int {		
+		number := current_prime + 1;
+		
+		while true {
+			is_prime := true;
+			for prime: << primes {
+				if number % prime == 0 {
+					is_prime = false;
+					break;
+				}
+			}
+			
+			if is_prime break;
+			
+			number += 1;
+		}
+		
+		array_add(primes, number);
+		return number;
+	}
+	
+	current_prime := primes[0];
+	
+	rest := number; 
+	while true {
+		while rest % current_prime == 0 {
+			rest /= current_prime;
+		}
+		
+		if rest == 1 break;
+		
+		current_prime = get_next_prime(*primes, current_prime);
+	}
+	
+	return current_prime;
+	
+}
+
 main :: () {
 	check :: ($problem: int) {
 		solutions :: int.[
 			233168,
-			4613732
+			4613732,
+			6857
 		];
 		
 		given_solution   := #insert #run tprint("problem%();", problem);
@@ -69,6 +117,7 @@ main :: () {
 	
 	check(1);
 	check(2);
+	check(3);
 	
 }
 	
