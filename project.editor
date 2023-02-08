@@ -1,0 +1,7 @@
+
+open C:\jai\modules
+open C:\jai\modules\Compiler
+
+build_command jai -import_dir C:\Projects\MyModules -quiet build.jai
+
+F1 performance
